@@ -15,9 +15,12 @@
 
 1. (1 mark) Report the name of measurement tool used in your measurements (you are free to choose *any* open source measurement software as long as it can measure CPU and memory performance). Please describe your configuration of the measurement tool, and explain why you set such a value for each parameter. Explain what the values obtained from measurement results represent (e.g., the value of your measurement result can be the execution time for a scientific computing task, a score given by the measurement tools or something else).
 
-    I used Phoronix Test Suite during the measurements.
+     > 
+    **> Measurement Tool:**
+     > Phoronix Test Suite.
+
     > 
-    **> Configuration:**
+    **> Configuration and Parameter Settings:**
     > Installation：
     ```
     ssh -i /Users/lilu/Downloads/best.pem ubuntu@ec2-3-84-88-156.compute-1.amazonaws.com
@@ -34,24 +37,26 @@
     phoronix-test-suite run pts/ramspeed
     ```
     >
-    - `compress-7zip` is a test suite and it could evaluate the performance of `7-Zip` when compressing and decompressing files. It involves metrics such as compression speed, decompression speed, and compression ratio. Here I use the average compression rating to evaluate the CPU performance.
+    >Explanations and Parameters Settings:
+    >
+    - `compress-7zip` is a test suite and it could evaluate the performance of `7-Zip` when compressing and decompressing files. It involves metrics such as compression speed, decompression speed, and compression ratio. Here I use the average compression rating to evaluate the CPU performance (3 iterations).
       
-    - `ramspeed` is a tool specifically designed to test the performance of computer memory. It measures performance of the read and write speed by executing a series of specific memory operations, such as sequential read and write, and random read and write.
+    - `ramspeed` is a tool specifically designed to test the performance of computer memory. It measures performance of the read and write speed by executing a series of specific memory operations, such as sequential read and write, and random read and write. Here I use Run-Type 5 (Average) and Benchmark 2 (Floating Point) to evaluate the memory performance (3 iterations).
     
     **> Explanation of Measurement Results:**
      - CPU performance： The measurement results of CPU performance are MIPS (Million Instructions Per Second). The higher the MIPS, the better the CPU performance.
     
     - Memory performance: The measurement results of memory performance are in MB/s, which indicates the speed of data transfer rate. The higher the value, the better the memory performance.
 
-2. (1 mark) Run your measurement tool on general purpose `t2.micro`, `t2.medium`, and `c5d.large` Linux instances, respectively, and find the performance differences among these instances. Launch all the instances in the **US East (N. Virginia)** region. Does the performance of EC2 instances increase commensurate with the increase of the number of vCPUs and memory resource?
+3. (1 mark) Run your measurement tool on general purpose `t2.micro`, `t2.medium`, and `c5d.large` Linux instances, respectively, and find the performance differences among these instances. Launch all the instances in the **US East (N. Virginia)** region. Does the performance of EC2 instances increase commensurate with the increase of the number of vCPUs and memory resource?
 
     In order to answer this question, you need to complete the following table by filling out blanks with the measurement results corresponding to each instance type.
 
     | Size        | CPU performance | Memory performance |
     | ----------- | --------------- | ------------------ |
-    | `t2.micro` |    3494 MIPS           |      10376.01 MB/s             |
-    | `t2.medium`  |   9673 MIPS            |     19328.82 MB/s              |
-    | `c5d.large` |    7641 MIPS            |     13508.68 MB/s              |
+    | `t2.micro` |    3494 MIPS (Compression)           |      10376.01 MB/s             |
+    | `t2.medium`  |   9673 MIPS (Compression)            |     19328.82 MB/s              |
+    | `c5d.large` |    7641 MIPS (Compression)            |     13508.68 MB/s              |
 
     > Region: US East (N. Virginia). Use `Ubuntu Server 22.04 LTS (HVM)` as AMI.
     
